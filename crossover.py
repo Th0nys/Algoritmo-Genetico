@@ -52,10 +52,9 @@ def selecao_roleta():
         else:
             frequencia_acumulada.append(frequencia_acumulada[i-1] + amostras[i]) 
         porcent.append((frequencia_acumulada[i]/total_acumulado) * 100)
-        print(frequencia_acumulada[i])
-    print(apt)
-    print(frequencia_acumulada)
-    print(total_acumulado)
+        
+    print(f'avaliações = {apt}')
+    print(f'frequencia_acumulada = {frequencia_acumulada}')
     print(f'{porcent}')
 
 
