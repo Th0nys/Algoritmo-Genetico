@@ -41,11 +41,23 @@ def mutacao():
             k = random.randint(0,3)
             pop[i][k] = not pop[i][k]
       
-def selecao():
-    roleta = []
+def selecao_roleta():
+    total_acumulado = sum(apt)
+    porcent = []
+    frequencia_acumulada = []
+    amostras = sorted(apt)
     for i in range(0, len(pop)):
-        roleta.append(apt[i]/len(pop) * 100)   
-    print(roleta)
+        if i == 0:
+            frequencia_acumulada.append(amostras[0])
+        else:
+            frequencia_acumulada.append(frequencia_acumulada[i-1] + amostras[i]) 
+        porcent.append((frequencia_acumulada[i]/total_acumulado) * 100)
+        print(frequencia_acumulada[i])
+    print(apt)
+    print(frequencia_acumulada)
+    print(total_acumulado)
+    print(f'{porcent}')
+
 
 
 gerarPop()
@@ -54,4 +66,4 @@ avaliar()
 mostraApt()
 mutacao()
 mostra()
-selecao()
+selecao_roleta()
