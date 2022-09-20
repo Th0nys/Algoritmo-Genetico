@@ -28,9 +28,6 @@ def avaliar():
         for j in range(4):
             if (prop[j][0] * prop[j][1]) == pop[i][j]:
                 apt[i] = apt[i] +1
-    def func(pct, allvalues): 
-        absolute = int(pct / 100.*np.sum(allvalues)) 
-        return pct, absolute
            
 def mutacao():
     escolha = int(len(prop) * 0.25)
