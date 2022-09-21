@@ -4,17 +4,25 @@ import numpy as np
 
 prop = [[0,0],[0,1],[1,0],[1,1]]
 pop = [[0 for i in range(4)] for j in range(8)]
+popFil = [[0 for i in range(4)] for j in range(8)]
 apt = [0 for i in range(8)]
+aptFil = [0 for i in range(8)]
 
 def gerarPop():
     for i in range(8):
         for j in range(4):
             pop[i][j] = bool(random.randint(0,1))
             
-def mostra():
+def mostraPop():
     print("--------------------------------")
     for i in range(7):
         print(pop[i])
+    print("--------------------------------")
+
+def mostraPopFil():
+    print("--------------------------------")
+    for i in range(7):
+        print(popFil[i])
     print("--------------------------------")
     
 def mostraApt():
@@ -23,11 +31,17 @@ def mostraApt():
         print(apt[i])
     print("++++++++++++++++++++++++++++++++")
     
-def avaliar():
+def avaliarPop():
     for i in range(8):
         for j in range(4):
             if (prop[j][0] * prop[j][1]) == pop[i][j]:
-                apt[i] = apt[i] +1
+                apt[i] = apt[i] + 1
+
+def avaliarPopFil():
+    for i in range(8):
+        for j in range(4):
+            if (prop[j][0] * prop[j][1]) == popFil[i][j]:
+                aptFil[i] = aptFil[i] + 1
            
 def mutacao():
     escolha = int(len(prop) * 0.25)
@@ -54,12 +68,34 @@ def selecao_roleta():
     print(f'frequencia_acumulada = {frequencia_acumulada}')
     print(f'{porcent}')
 
+def cruzamento():
+    popFil[0][0] = pop[0][0]
+    popFil[0][1] = pop[0][1]
+    popFil[0][2] = pop[1][2]
+    popFil[0][3] = pop[1][3]
+    popFil[1][0] = pop[1][0]
+    popFil[1][1] = pop[1][1]
+    popFil[1][2] = pop[0][2]
+    popFil[1][3] = pop[0][3]
 
+    popFil[2][0] = pop[2][0]
+    popFil[2][1] = pop[2][1]
+    popFil[2][2] = pop[3][2]
+    popFil[2][3] = pop[3][3]
+    popFil[3][0] = pop[3][0]
+    popFil[3][1] = pop[3][1]
+    popFil[3][2] = pop[2][2]
+    popFil[3][3] = pop[2][3]
+
+def substituicao():
+    pass
 
 gerarPop()
-mostra()
-avaliar()
+mostraPop()
+mostraPopFil()
+avaliarPop()
+avaliarPopFil()
 mostraApt()
 mutacao()
-mostra()
+mostraPop()
 selecao_roleta()
