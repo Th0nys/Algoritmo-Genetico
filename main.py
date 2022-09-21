@@ -1,3 +1,6 @@
+from fuctions import *
+
+
 gerarPop()
 mostraPop()
 mostraPopFil()
