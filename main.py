@@ -1,11 +1,11 @@
-from fuctions import *
-
+from functions import *
 
 gerarPop()
 mostraPop()
-mostraPopFil()
+
 i = 0
-while apt[3] != 4 and i < 20:
+apto = True
+while apto and i < 10:
     avaliarPop()
     avaliarPopFil()
     mostraApt()
@@ -14,6 +14,7 @@ while apt[3] != 4 and i < 20:
     avaliarPop()
     mostraPop()
     ordenar(pop, apt)
+    mostraApt()
     mostraPop()
     avaliarPopFil()
     cruzamento(selecao_roleta())
@@ -27,6 +28,13 @@ while apt[3] != 4 and i < 20:
     mostraPop()
     mostraApt()
     ordenar(pop, apt)
+    if apt[0] >= 4:
+        apto = False
     i = i + 1
-
-print(f'{i} gerações para achar soluções')
+    
+if not apto:
+    print(f'{i} gerações para achar soluções')
+    print(f'Solução encontrada: {pop[0]}')
+    print(parse(pop[0]))
+else:
+    print("Não fora achada solução")
